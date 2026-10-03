@@ -828,8 +828,8 @@ class Tracker():
                 d = d1 + d2
                 pt = (pts_3d[42] * d1 + pts_3d[45] * d2) / d
             if i < 2:
-                reference = rmat.dot(pt)
-                reference = reference + face_info.translation.flatten()
+                reference = rmat.dot(pt.flatten())
+                reference = reference.flatten() + face_info.translation.flatten()
                 reference = self.camera.dot(reference)
                 depth = reference[2]
                 pt_3d = np.array([lms[66+i][0] * depth, lms[66+i][1] * depth, depth], np.float32)
